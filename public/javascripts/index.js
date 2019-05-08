@@ -1,31 +1,65 @@
-function createNode(element) {
-  return document.createElement(element)
+// Create class to be responsible for all API logic
+class MedAdvAPI {
+  constructor() {
+    this.endpoint = 'https://csgapi.appspot.com/v1/medicare_advantage/open/companies.json'
+  }
+
+getCompanies(query) {
+  fetch(this.endpoint, { mode: 'no-cors' })
+  .then(response => response.json())
+  .then(data => {
+    data.items.forEach(company => {
+      new MedAdvCompany(company.name)
+    })
+    MedAdvCompany.renderAll()
+})
+
+// Create class to represent one company
+class MedAdvCompany {
+  static all = []
+
+  constructor(name) {
+    this.name
+    MedAdvCompany.all.push(this)
+  }
+
+render(i) {
+  let tbody = document.querySelector('tbody')
+  let html = `
+  <tr>
+  <td>${i + 1}. ${this.name}</td>
+  </tr>
+  `
+  tbody.innerHTML += html
 }
 
-function append(parent, el) {
-  return parent.appendChild(el)
+static clearAll() {
+    MedAdvCompany.all = [];
+  }
+
+static renderAll() {
+  let tbody = document.querySelector('tbody')
+  tbody.innerHTML = ''
+  MedAdvCompany.all.forEach((company, i) => {
+    company.reder(i)
+  })
+ }
 }
 
-// get company data
-// const ul = document.getElementById('companies')
-const endpoint = 'https://csgapi.appspot.com/v1/medicare_advantage/open/companies.json'
+function searchMedAdvAPI(e) {
+  // prevent link from sending us to a refresh
+  e.preventDefault();
+  // find query value
+  let query = document.querySelector('#query').value
+  // delete all searched repositories
+  MedAdvCompany.clearAll();
+  // create a new github api instance
+  let medadvAPI = new MedAdvAPI();
+  // call the search repos instance passing in our query
+  medadvAPI.getCompanies(query);
+}
 
-fetch(endpoint, { mode: 'no-cors' })
-  .then(function(response) {
-    return response.json()
-  })
-  .then(function(myJson) {
-    // console.log(JSON.stringify(myJson))
-    let companies = myJson.results;
-    return companies.map(function(company) {
-      let li = createNode('li'),
-          span = createNode('span')
-      span.innerHTML = `${company.name}`;
-      append(li, span);
-      append(ul, li);
-  })
-  .catch(function(error) {
-    console.log(error)
-  })
-
-// create company objects
+window.addEventListener('load', function(){
+  // add the searchGithub function as a listener for a submit of the form
+  document.querySelector('form').addEventListener("submit", searchMedAdvAPI)
+})
