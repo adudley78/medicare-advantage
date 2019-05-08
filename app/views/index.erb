@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <title>Medicare Advantage</title>
+  </head>
+  
+  <body class="grey lighten-3">
+  <div class="container">
+    <div class="card">
+      <div class="card-content">
+        <h4>Search Medicare Advantage Companies</h4>
+        <form id="search-form">
+          <div class="input-field">
+            <input type="text" id="query">
+            <label for="query">Search</label>
+          </div>
+          <input type="submit" value="search" class="btn">
+    </form>
+
+    <h1>Medicare Advantage Companies</h1>
+    <table class="striped">
+      <thead>
+        <th>#</th>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Forks</th>
+      </thead>
+      <tbody id="company-list">
+
+      </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="javascripts/index.js"></script>
+  </body>
+</html>
