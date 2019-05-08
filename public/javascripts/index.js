@@ -4,7 +4,7 @@ class MedAdvAPI {
     this.endpoint = 'https://csgapi.appspot.com/v1/medicare_advantage/open/companies.json'
   }
 
-getCompanies(query) {
+getCompanies() {
   fetch(this.endpoint, { mode: 'no-cors' })
   .then(response => response.json())
   .then(data => {
@@ -12,7 +12,9 @@ getCompanies(query) {
       new MedAdvCompany(company.name)
     })
     MedAdvCompany.renderAll()
-})
+  })
+  }
+}
 
 // Create class to represent one company
 class MedAdvCompany {
@@ -45,21 +47,3 @@ static renderAll() {
   })
  }
 }
-
-function searchMedAdvAPI(e) {
-  // prevent link from sending us to a refresh
-  e.preventDefault();
-  // find query value
-  let query = document.querySelector('#query').value
-  // delete all searched repositories
-  MedAdvCompany.clearAll();
-  // create a new github api instance
-  let medadvAPI = new MedAdvAPI();
-  // call the search repos instance passing in our query
-  medadvAPI.getCompanies(query);
-}
-
-window.addEventListener('load', function(){
-  // add the searchGithub function as a listener for a submit of the form
-  document.querySelector('form').addEventListener("submit", searchMedAdvAPI)
-})
