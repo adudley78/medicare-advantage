@@ -12,12 +12,12 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
 
-    erb :home
+    erb :'home'
   end
 
   post '/companies' do
 
-    erb :'companies/index.html.erb'
+    erb :'/companies/index'
   end
 
 end
