@@ -15,9 +15,9 @@ class ApplicationController < Sinatra::Base
     erb :home
   end
 
-  post '/company' do
+  post '/companies' do
 
-    erb :index
+    erb :'companies/index.html.erb'
   end
 
 end
