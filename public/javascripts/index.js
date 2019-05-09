@@ -23,30 +23,37 @@ class MedAdvCompany {
 
   constructor(organization_name) {
     this.organization_name = organization_name
-    MedAdvCompany.all.push(this)
+    if (this.organization_name != "") {
+      MedAdvCompany.all.push(this)
+    }
   }
 
-render(i) {
-  let tbody = document.querySelector('tbody')
-  let html = `
-  <tr>
-  <td>${i + 1}. ${this.organization_name}</td>
-  </tr>
-  `
-  tbody.innerHTML += html
-}
+// on Submit event
+// event questions: 1. What kind of event? 2. When should I attach?
+// on click save to DB, save this search?
+// on click delete off page
 
-static clearAll() {
-    MedAdvCompany.all = [];
+  render(i) {
+    let tbody = document.querySelector('tbody')
+    let html = `
+    <tr>
+      <td>${i + 1}. ${this.organization_name}</td>
+    </tr>
+    `
+    tbody.innerHTML += html
   }
 
-static renderAll() {
-  let tbody = document.querySelector('tbody')
-  tbody.innerHTML = ''
-  MedAdvCompany.all.forEach((company, i) => {
-    company.render(i)
-  })
- }
+  static clearAll() {
+      MedAdvCompany.all = [];
+  }
+
+  static renderAll() {
+    let tbody = document.querySelector('tbody')
+    tbody.innerHTML = ''
+    MedAdvCompany.all.forEach((company, i) => {
+      company.render(i)
+    })
+  }
 }
 
 window.addEventListener("load", function() {

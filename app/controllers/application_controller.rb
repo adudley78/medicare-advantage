@@ -16,14 +16,4 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  get '/search' do
-    @companies = Company.all
-    if params[:search]
-      @companies = Company.search(params[:search])
-
-      # how to render search results on same page
-      # erb :'/companies/result'
-    end
-  end
-
 end
