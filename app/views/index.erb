@@ -18,10 +18,10 @@
       <div class="card-content">
 
         <h4>Search Medicare Advantage Companies</h4>
-          <form id="search-form">
+          <form id="search-form" action="/search" method="GET">
             <div class="input-field">
-              <input type="text" id="query">
-              <label for="query">Search</label>
+              <input type="text" id="search">
+              <label for="search">Search</label>
             </div>
             <input type="submit" value="search" class="btn">
           </form>
@@ -33,7 +33,7 @@
               <th>Name</th>
             </thead>
             <tbody id="company-list">
-              
+
             </tbody>
           </table
 
