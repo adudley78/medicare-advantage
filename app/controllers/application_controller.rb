@@ -1,4 +1,5 @@
 require './config/environment'
+require 'json'
 
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
@@ -11,7 +12,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-
+    
     erb :index
   end
 
