@@ -8,14 +8,7 @@ getCompanies() {
   const proxyurl = 'https://immense-wildwood-59567.herokuapp.com/'
 
   fetch(proxyurl + this.endpoint)
-    // method: 'GET',
-    // headers: "Access-Control-Allow-Origin: *"
-    // mode: 'no-cors'
-    // cache: 'default',
-    // body: JSON.stringify(data)
-    // })
     .then(response => response.json())
-    // .then(data => console.log(data))
     .then(data => {
       data.forEach(company => {
         new MedAdvCompany(company.organization_name)
