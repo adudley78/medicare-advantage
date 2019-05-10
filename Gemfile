@@ -12,6 +12,7 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'json'
+gem 'jquery'
 
 group :test do
   gem 'rspec'

@@ -1,3 +1,5 @@
+<!-- Validated with W3C Markup Validation Service -->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -13,31 +15,28 @@
   </head>
 
   <body class="grey lighten-3">
-  <div class="container">
-    <div class="card">
+  <section class="container">
+    <header class="card">
       <div class="card-content">
 
         <h4>Search Medicare Advantage Companies</h4>
-          <form id="search-form">
-            <div class="input-field">
-              <input type="text" id="query">
-              <label for="query">Search</label>
-            </div>
-            <input type="submit" value="search" class="btn">
+          <form id="search-companies">
+            <input type="text" placeholder="Search companies by name..." />
           </form>
 
+        <!-- Add separate span tags for number and name elements -->
         <h1>Medicare Advantage Companies</h1>
-          <table class="striped">
-            <tbody id="company-list">
+          <table class="striped" id="company-list">
+            <tbody class="organization_name">
 
             </tbody>
-          </table
+          </table>
 
       </div>
-    </div>
-  </div>
+    </header>
+  </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="/javascripts/index.js"></script>
+    <script src="/javascripts/index.js"></script>
   </body>
 </html>
